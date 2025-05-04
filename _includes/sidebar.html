@@ -48,6 +48,7 @@
       {% assign maxPost = 5 %}
       {% assign counter = 0 %}
       {% for post in site.posts | sort:"date" | reverse %}
+        {%- if post.hidden -%}{%- continue -%}{%- endif -%}
       <li>
         <a href="{{ post.url | absolute_url }}">{{ post.title }}</a>
       </li>
@@ -77,7 +78,7 @@
     <div id="archives-3" class="widget widget_archive">
       <h2 class="widget-title">Archives</h2>
       <ul>
-        {% include_cached sidebar-archives.html %}
+        {% include sidebar-archives.html %}
       </ul>
     </div>
   </div>
